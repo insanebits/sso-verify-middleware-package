@@ -1,0 +1,55 @@
+{
+    "name": "hostinger/sso-jwt-decode",
+    "description": "A Package to verify if JWT",
+    "keywords": [
+        "hostinger",
+        "sso-jwt-decode"
+    ],
+    "homepage": "https://github.com/hostinger/sso-jwt-decode",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Rytis Dereškevičius",
+            "email": "rytis@hostinger.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0",
+        "lcobucci/jwt": "^3.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hostinger\\SsoJwtDecode\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Hostinger\\SsoJwtDecode\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hostinger\\SsoJwtDecode\\SsoJwtDecodeServiceProvider"
+            ],
+            "aliases": {
+                "SsoJwtDecode": "Hostinger\\SsoJwtDecode\\SsoJwtDecodeFacade"
+            }
+        }
+    }
+}
