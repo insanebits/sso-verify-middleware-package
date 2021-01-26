@@ -8,6 +8,7 @@
     "homepage": "https://github.com/hostinger/sso-jwt-handler",
     "license": "MIT",
     "type": "library",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Rytis Dereškevičius",
