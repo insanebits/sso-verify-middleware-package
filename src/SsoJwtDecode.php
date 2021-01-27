@@ -5,6 +5,7 @@ namespace Hostinger\SsoJwtDecode;
 use Illuminate\Http\Request;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Token;
+use Lcobucci\JWT\Signer\Key;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 /**
@@ -40,7 +41,7 @@ class SsoJwtDecode
 
         $algorithm = $this->getJWTAlgorithm();
 
-        if (!$JWT->verify(new $algorithm(), $this->getJWTPublicKey())) {
+        if (!$JWT->verify(new $algorithm(), new Key($this->getJWTPublicKey()))) {
             throw new UnauthorizedHttpException(self::EXCEPTION_CHALLENGE, 'Bearer token is invalid');
         }
 
