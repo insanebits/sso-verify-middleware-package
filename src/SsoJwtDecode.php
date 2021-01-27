@@ -92,7 +92,7 @@ class SsoJwtDecode
     private function validateRequiredClaims(Token $token): void
     {
         foreach ($this->getJWTRequiredClaims() as $claim) {
-            if (!$token->hasClaim($claim)){
+            if (!$token->hasClaim($claim)) {
                 throw new UnauthorizedHttpException(self::EXCEPTION_CHALLENGE, 'JWT missing required claims');
             }
         }
@@ -105,7 +105,7 @@ class SsoJwtDecode
      */
     private function validateJWTExpiration(Token $JWT): void
     {
-        if ($JWT->isExpired()) {
+        if ($JWT->isExpired(new \DateTime())) {
             throw new UnauthorizedHttpException(self::EXCEPTION_CHALLENGE, 'JWT token is expired');
         }
     }
